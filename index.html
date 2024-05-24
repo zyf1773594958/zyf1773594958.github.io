@@ -1,9 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>测试页面</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成链接</title>
 </head>
 <body>
-    <h1>这是一个测试页面</h1>
+
+<form id="productForm">
+  <label for="goods_id">商品ID:</label><br>
+  <input type="text" id="goods_id" name="goods_id" value="2702"><br>
+  <label for="name">商品名称:</label><br>
+  <input type="text" id="name" name="name" value="CRYBABY悲伤俱乐部系列-毛绒公仔"><br>
+  <label for="price">价格:</label><br>
+  <input type="text" id="price" name="price" value="199"><br>
+  <label for="count">数量:</label><br>
+  <input type="text" id="count" name="count" value="2"><br>
+  <label for="image">图片链接:</label><br>
+  <input type="text" id="image" name="image" value="https://res.paquapp.com/boxonline/auto_new/shop/49/lktckz.jpg"><br><br>
+  <button type="button" onclick="generateURL()">生成链接</button>
+</form>
+
+<!-- <div id="result"></div> -->
+<a id="result" href="" target="_blank"></a>
+
+<script>
+function generateURL() {
+
+  var url_prefix = "https://cloud1-4go5ml646f146ac5-1316459216.tcloudbaseapp.com/1.html?username=gh_9d8815c84ea4?path=packages/storeGo/pages/confirmOrder/confirmOrder?";
+  var goods_id = document.getElementById("goods_id").value;
+  var name = document.getElementById("name").value;
+  var price = document.getElementById("price").value;
+  var count = document.getElementById("count").value;
+  var image = document.getElementById("image").value;
+
+  name = encodeURIComponent(name); // 转义名称中的特殊字符
+  image = encodeURIComponent(image); // 转义图片链接中的特殊字符
+
+  var url = "special=false&orderType=2&orderDetail=[{'sg_goods_spu':{'id':" + goods_id + ",'type':1,'status':1,'sell_at':'2024-05-21T22:00:00+08:00','expect_send_at':'0001-01-01T00:00:00Z','has_buy_limit':false,'master_has_buy_limit':false,'curr_has_buy_limit':false,'buy_limit_strategy_id':0,'name':'" + name + "','desc':'','main_img':'" + image + "','qrc_img':'','is_mystery_prize':false,'per_box_size':0,'sell_type':1,'calendar_sequence':93,'publish_at':'2024-05-15T18:05:00+08:00','store_is_sell':false,'sell_channel':1,'has_not_pay_lock':false,'video_url':'','video_cover':'','detail_body_imgs_size':5977,'special':false,'can_share':true,'can_add_car':true,'is_outside_prize':false,'is_qualification':false,'label_id':0,'box_spu_id':0,'is_open_risk':false},'box_online_good_info':null,'sg_goods_skus':{'sg_goods_sku':{'id':" + goods_id + ",'goods_spu_id':" + goods_id + ",'price':" + price + ",'original_price':" + price + ",'name':'" + name + "','main_img':'" + image + "','new_share_img':'','sequence':0,'hd_goods_barcode':'6941848273352','hd_goods_code':'1230922145','popular_attr':1,'status':1,'promotion_gift':0},'sg_inventory':null,'inventory':null,'sku_inventory':{'goods_sku_id':3195,'store_id':1,'total_inventory':3}},'sg_buy_limit_strategy':null,'sg_ip':[{'id':4,'name':'DIMOO','designer_id':2,'designer_name':'" + name + "','tag_id':0,'status':1,'keywords':'dimmo','alias':'','is_show_corridor':true,'jump_type':4,'app_id':'','video_id':''}],'curr_label':null,'show_recommend':true,'qualification_link':null,'sell_stores':null,'server_time':'2024-05-13T09:54:05.117455219+08:00','expectSale':false,'sendTime':'','isLimit':false,'userBuyLimit':null,'limitNum':null,'skuIndex':0,'count':" + count + ",'isCart':false}]&pageType=1";
+  
+  url = url.replace(/'/g, '"'); // 将所有单引号替换为双引号
+
+  // url = encodeURIComponent(url);
+
+  var result_url = url_prefix + url;
+
+  // document.getElementById("result").innerHTML = result_url;
+  var link = document.getElementById("result");
+  link.href = result_url;
+  link.textContent = "点击跳转到小程序";
+}
+</script>
+
 </body>
 </html>
