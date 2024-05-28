@@ -1,68 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>生成链接</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成链接</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    form {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: calc(100% - 10px);
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
+
 <body>
 
-<form id="productForm">
-  <label for="goods_id">商品ID:</label><br>
-  <input type="text" id="goods_id" name="goods_id" value="2702"><br>
-  <label for="name">商品名称:</label><br>
-  <input type="text" id="name" name="name" value="THE MONSTERS 春天野在家系列 - 雨靴包"><br>
-  <label for="price">价格:</label><br>
-  <input type="text" id="price" name="price" value="199"><br>
-  <label for="count">数量:</label><br>
-  <input type="text" id="count" name="count" value="2"><br>
-  <label for="image">图片链接:</label><br>
-  <input type="text" id="image" name="image" value="https://res.paquapp.com/boxonline/auto_new/shop/49/lktckz.jpg"><br><br>
-  <button type="button" onclick="generateURL()">生成链接</button>
-</form>
+  <form id="productForm">
+    <label for="goods_id">商品ID:</label>
+    <input type="text" id="goods_id" name="goods_id" value="2702">
+    <label for="name">商品名称:</label>
+    <input type="text" id="name" name="name" value="THE MONSTERS 春天野在家系列 - 雨靴包">
+    <label for="price">价格:</label>
+    <input type="text" id="price" name="price" value="199">
+    <label for="count">数量:</label>
+    <input type="text" id="count" name="count" value="2">
+    <label for="image">图片链接:</label>
+    <input type="text" id="image" name="image" value="https://res.paquapp.com/boxonline/auto_new/shop/49/lktckz.jpg">
+    <button type="button" onclick="generateURL()">生成链接</button>
 
-<!-- <div id="result"></div> -->
-<a id="result" href="" target="_blank"></a>
+    <!-- <div id="result"></div> -->
+    <a id="result" href="" target="_blank"></a>
+  </form>
+  <script>
 
-<script>
-
-function customUrlEncode(name) {
-    return name.split('')
+    function customUrlEncode(name) {
+      return name.split('')
         // 使用正则表达式匹配非字母、非数字、非空格的字符，并进行 URL 编码
         .map(char => /[a-zA-Z0-9+\s]/.test(char) ? char : encodeURIComponent(char))
         .join('');
-}
+    }
 
-function generateURL() {
+    function generateURL() {
 
-  var url_prefix = "https://cloud1-4go5ml646f146ac5-1316459216.tcloudbaseapp.com/1.html?username=gh_9d8815c84ea4?path=packages/storeGo/pages/confirmOrder/confirmOrder?";
-  var goods_id = document.getElementById("goods_id").value;
-  var name = document.getElementById("name").value;
-  var price = document.getElementById("price").value;
-  var count = document.getElementById("count").value;
-  var image = document.getElementById("image").value;
+      var url_prefix = "https://cloud1-4go5ml646f146ac5-1316459216.tcloudbaseapp.com/1.html?username=gh_9d8815c84ea4?path=packages/storeGo/pages/confirmOrder/confirmOrder?";
+      var goods_id = document.getElementById("goods_id").value;
+      var name = document.getElementById("name").value;
+      var price = document.getElementById("price").value;
+      var count = document.getElementById("count").value;
+      var image = document.getElementById("image").value;
 
-  name = customUrlEncode(name.replace(/ /g,'+'))
-  image = encodeURIComponent(image) // 转义图片链接中的特殊字符
+      name = customUrlEncode(name.replace(/ /g, '+'))
+      image = encodeURIComponent(image) // 转义图片链接中的特殊字符
 
-  // var url = "special=false&orderType=2&orderDetail=[{'sg_goods_spu':{'id':" + goods_id + ",'type':1,'status':1,'sell_at':'2024-05-21T22:00:00+08:00','expect_send_at':'0001-01-01T00:00:00Z','has_buy_limit':false,'master_has_buy_limit':false,'curr_has_buy_limit':false,'buy_limit_strategy_id':0,'name':'" + name + "','desc':'','main_img':'" + image + "','qrc_img':'','is_mystery_prize':false,'per_box_size':0,'sell_type':1,'calendar_sequence':93,'publish_at':'2024-05-15T18:05:00+08:00','store_is_sell':false,'sell_channel':1,'has_not_pay_lock':false,'video_url':'','video_cover':'','detail_body_imgs_size':5977,'special':false,'can_share':true,'can_add_car':true,'is_outside_prize':false,'is_qualification':false,'label_id':0,'box_spu_id':0,'is_open_risk':false},'box_online_good_info':null,'sg_goods_skus':{'sg_goods_sku':{'id':" + goods_id + ",'goods_spu_id':" + goods_id + ",'price':" + price + ",'original_price':" + price + ",'name':'" + name + "','main_img':'" + image + "','new_share_img':'','sequence':0,'hd_goods_barcode':'6941848273352','hd_goods_code':'1230922145','popular_attr':1,'status':1,'promotion_gift':0},'sg_inventory':null,'inventory':null,'sku_inventory':{'goods_sku_id':3195,'store_id':1,'total_inventory':3}},'sg_buy_limit_strategy':null,'sg_ip':[{'id':4,'name':'DIMOO','designer_id':2,'designer_name':'" + name + "','tag_id':0,'status':1,'keywords':'dimmo','alias':'','is_show_corridor':true,'jump_type':4,'app_id':'','video_id':''}],'curr_label':null,'show_recommend':true,'qualification_link':null,'sell_stores':null,'server_time':'2024-05-13T09:54:05.117455219+08:00','expectSale':false,'sendTime':'','isLimit':false,'userBuyLimit':null,'limitNum':null,'skuIndex':0,'count':" + count + ",'isCart':false}]&pageType=1";
+      // var url = "special=false&orderType=2&orderDetail=[{'sg_goods_spu':{'id':" + goods_id + ",'type':1,'status':1,'sell_at':'2024-05-21T22:00:00+08:00','expect_send_at':'0001-01-01T00:00:00Z','has_buy_limit':false,'master_has_buy_limit':false,'curr_has_buy_limit':false,'buy_limit_strategy_id':0,'name':'" + name + "','desc':'','main_img':'" + image + "','qrc_img':'','is_mystery_prize':false,'per_box_size':0,'sell_type':1,'calendar_sequence':93,'publish_at':'2024-05-15T18:05:00+08:00','store_is_sell':false,'sell_channel':1,'has_not_pay_lock':false,'video_url':'','video_cover':'','detail_body_imgs_size':5977,'special':false,'can_share':true,'can_add_car':true,'is_outside_prize':false,'is_qualification':false,'label_id':0,'box_spu_id':0,'is_open_risk':false},'box_online_good_info':null,'sg_goods_skus':{'sg_goods_sku':{'id':" + goods_id + ",'goods_spu_id':" + goods_id + ",'price':" + price + ",'original_price':" + price + ",'name':'" + name + "','main_img':'" + image + "','new_share_img':'','sequence':0,'hd_goods_barcode':'6941848273352','hd_goods_code':'1230922145','popular_attr':1,'status':1,'promotion_gift':0},'sg_inventory':null,'inventory':null,'sku_inventory':{'goods_sku_id':3195,'store_id':1,'total_inventory':3}},'sg_buy_limit_strategy':null,'sg_ip':[{'id':4,'name':'DIMOO','designer_id':2,'designer_name':'" + name + "','tag_id':0,'status':1,'keywords':'dimmo','alias':'','is_show_corridor':true,'jump_type':4,'app_id':'','video_id':''}],'curr_label':null,'show_recommend':true,'qualification_link':null,'sell_stores':null,'server_time':'2024-05-13T09:54:05.117455219+08:00','expectSale':false,'sendTime':'','isLimit':false,'userBuyLimit':null,'limitNum':null,'skuIndex':0,'count':" + count + ",'can_share':true,'isCart':false}]&pageType=1";
 
 
-  var url = "special=false&orderType=2&orderDetail=%5B%7B%22sg_goods_spu%22%3A%7B%22id%22%3A" + goods_id + "%2C%22type%22%3A1%2C%22status%22%3A1%2C%22sell_at%22%3A%222024-05-21T22%3A00%3A00%2B08%3A00%22%2C%22expect_send_at%22%3A%220001-01-01T00%3A00%3A00Z%22%2C%22has_buy_limit%22%3Afalse%2C%22master_has_buy_limit%22%3Afalse%2C%22curr_has_buy_limit%22%3Afalse%2C%22buy_limit_strategy_id%22%3A0%2C%22name%22%3A%22" + name + "%22%2C%22desc%22%3A%22%22%2C%22main_img%22%3A%22" + image + "%22%2C%22qrc_img%22%3A%22%22%2C%22is_mystery_prize%22%3Afalse%2C%22per_box_size%22%3A0%2C%22sell_type%22%3A1%2C%22calendar_sequence%22%3A93%2C%22publish_at%22%3A%222024-05-15T18%3A05%3A00%2B08%3A00%22%2C%22store_is_sell%22%3Afalse%2C%22sell_channel%22%3A1%2C%22has_not_pay_lock%22%3Afalse%2C%22video_url%22%3A%22%22%2C%22video_cover%22%3A%22%22%2C%22detail_body_imgs_size%22%3A5977%2C%22special%22%3Afalse%2C%22can_share%22%3Atrue%2C%22can_add_car%22%3Atrue%2C%22is_outside_prize%22%3Afalse%2C%22is_qualification%22%3Afalse%2C%22label_id%22%3A0%2C%22box_spu_id%22%3A0%2C%22is_open_risk%22%3Afalse%7D%2C%22box_online_good_info%22%3Anull%2C%22sg_goods_skus%22%3A%7B%22sg_goods_sku%22%3A%7B%22id%22%3A" + goods_id + "%2C%22goods_spu_id%22%3A" + goods_id + "%2C%22price%22%3A" + price + "%2C%22original_price%22%3A" + price + "%2C%22name%22%3A%22" + name + "%22%2C%22main_img%22%3A%22" + image + "%22%2C%22new_share_img%22%3A%22%22%2C%22sequence%22%3A0%2C%22hd_goods_barcode%22%3A%226941848273352%22%2C%22hd_goods_code%22%3A%221230922145%22%2C%22popular_attr%22%3A1%2C%22status%22%3A1%2C%22promotion_gift%22%3A0%7D%2C%22sg_inventory%22%3Anull%2C%22inventory%22%3Anull%2C%22sku_inventory%22%3A%7B%22goods_sku_id%22%3A3195%2C%22store_id%22%3A1%2C%22total_inventory%22%3A3%7D%7D%2C%22sg_buy_limit_strategy%22%3Anull%2C%22sg_ip%22%3A%5B%7B%22id%22%3A4%2C%22name%22%3A%22DIMOO%22%2C%22designer_id%22%3A2%2C%22designer_name%22%3A%22" + name + "%22%2C%22tag_id%22%3A0%2C%22status%22%3A1%2C%22keywords%22%3A%22dimmo%22%2C%22alias%22%3A%22%22%2C%22is_show_corridor%22%3Atrue%2C%22jump_type%22%3A4%2C%22app_id%22%3A%22%22%2C%22video_id%22%3A%22%22%7D%5D%2C%22curr_label%22%3Anull%2C%22show_recommend%22%3Atrue%2C%22qualification_link%22%3Anull%2C%22sell_stores%22%3Anull%2C%22server_time%22%3A%222024-05-13T09%3A54%3A05.117455219%2B08%3A00%22%2C%22expectSale%22%3Afalse%2C%22sendTime%22%3A%22%22%2C%22isLimit%22%3Afalse%2C%22userBuyLimit%22%3Anull%2C%22limitNum%22%3Anull%2C%22skuIndex%22%3A0%2C%22count%22%3A" + count + "%2C%22isCart%22%3Afalse%7D%5D&pageType=1";
-  
-  url = url.replace(/'/g, '"'); // 将所有单引号替换为双引号
+      var url = "special=false&orderType=2&orderDetail=%5B%7B%22sg_goods_spu%22%3A%7B%22id%22%3A" + goods_id + "%2C%22type%22%3A1%2C%22status%22%3A1%2C%22sell_at%22%3A%222024-05-21T22%3A00%3A00%2B08%3A00%22%2C%22expect_send_at%22%3A%220001-01-01T00%3A00%3A00Z%22%2C%22has_buy_limit%22%3Afalse%2C%22master_has_buy_limit%22%3Afalse%2C%22curr_has_buy_limit%22%3Afalse%2C%22buy_limit_strategy_id%22%3A0%2C%22name%22%3A%22" + name + "%22%2C%22desc%22%3A%22%22%2C%22main_img%22%3A%22" + image + "%22%2C%22qrc_img%22%3A%22%22%2C%22is_mystery_prize%22%3Afalse%2C%22per_box_size%22%3A0%2C%22sell_type%22%3A1%2C%22calendar_sequence%22%3A93%2C%22publish_at%22%3A%222024-05-15T18%3A05%3A00%2B08%3A00%22%2C%22store_is_sell%22%3Afalse%2C%22sell_channel%22%3A1%2C%22has_not_pay_lock%22%3Afalse%2C%22video_url%22%3A%22%22%2C%22video_cover%22%3A%22%22%2C%22detail_body_imgs_size%22%3A5977%2C%22special%22%3Afalse%2C%22can_share%22%3Atrue%2C%22can_add_car%22%3Atrue%2C%22is_outside_prize%22%3Afalse%2C%22is_qualification%22%3Afalse%2C%22label_id%22%3A0%2C%22box_spu_id%22%3A0%2C%22is_open_risk%22%3Afalse%7D%2C%22box_online_good_info%22%3Anull%2C%22sg_goods_skus%22%3A%7B%22sg_goods_sku%22%3A%7B%22id%22%3A" + goods_id + "%2C%22goods_spu_id%22%3A" + goods_id + "%2C%22price%22%3A" + price + "%2C%22original_price%22%3A" + price + "%2C%22name%22%3A%22" + name + "%22%2C%22main_img%22%3A%22" + image + "%22%2C%22new_share_img%22%3A%22%22%2C%22sequence%22%3A0%2C%22hd_goods_barcode%22%3A%226941848273352%22%2C%22hd_goods_code%22%3A%221230922145%22%2C%22popular_attr%22%3A1%2C%22status%22%3A1%2C%22promotion_gift%22%3A0%7D%2C%22sg_inventory%22%3Anull%2C%22inventory%22%3Anull%2C%22sku_inventory%22%3A%7B%22goods_sku_id%22%3A3195%2C%22store_id%22%3A1%2C%22total_inventory%22%3A3%7D%7D%2C%22sg_buy_limit_strategy%22%3Anull%2C%22sg_ip%22%3A%5B%7B%22id%22%3A4%2C%22name%22%3A%22DIMOO%22%2C%22designer_id%22%3A2%2C%22designer_name%22%3A%22" + name + "%22%2C%22tag_id%22%3A0%2C%22status%22%3A1%2C%22keywords%22%3A%22dimmo%22%2C%22alias%22%3A%22%22%2C%22is_show_corridor%22%3Atrue%2C%22jump_type%22%3A4%2C%22app_id%22%3A%22%22%2C%22video_id%22%3A%22%22%7D%5D%2C%22curr_label%22%3Anull%2C%22show_recommend%22%3Atrue%2C%22qualification_link%22%3Anull%2C%22sell_stores%22%3Anull%2C%22server_time%22%3A%222024-05-13T09%3A54%3A05.117455219%2B08%3A00%22%2C%22expectSale%22%3Afalse%2C%22sendTime%22%3A%22%22%2C%22isLimit%22%3Afalse%2C%22userBuyLimit%22%3Anull%2C%22limitNum%22%3Anull%2C%22skuIndex%22%3A0%2C%22count%22%3A" + count + "%2C%22isCart%22%3Afalse%7D%5D&pageType=1";
 
-  // url = encodeURIComponent(url);
+      url = url.replace(/'/g, '"'); // 将所有单引号替换为双引号
 
-  var result_url = url_prefix + url;
-  console.log(result_url);
+      var result_url = url_prefix + url;
+      console.log(result_url);
 
-  // document.getElementById("result").innerHTML = result_url;
-  var link = document.getElementById("result");
-  link.href = result_url;
-  link.textContent = "点击跳转到小程序";
-}
-</script>
+      // document.getElementById("result").innerHTML = result_url;
+      var link = document.getElementById("result");
+      link.href = result_url;
+      link.textContent = "点击跳转到小程序";
+    }
+  </script>
 
 </body>
+
 </html>
