@@ -26,17 +26,17 @@
         //     video.play();
         // }, false);
 
-        video.addEventListener('canplaythrough', function () {
-            video.load();
-            video.play();
-        });
-
-        // document.addEventListener("visibilitychange", function () {
-        //     if (document.visibilityState === "visible") {
-        //         video.load();
-        //         video.play();
-        //     }
+        // video.addEventListener('canplaythrough', function () {
+        //     video.load();
+        //     video.play();
         // });
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "visible") {
+                video.load();
+                video.play();
+            }
+        });
     }
     </script>
 </body>
