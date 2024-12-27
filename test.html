@@ -7,18 +7,20 @@
 </head>
 
 <body>
-    <video autoplay="autoplay" loop="" muted="" class="video-s1" id="video1" draggable="true">
+    <video loop="" muted="" class="video-s1" id="video1" draggable="true">
         <source id="videoSource1" src="https://img.nsmc.org.cn/CLOUDIMAGE/GEOS/MOS/IRX/VIDEO/portal/GEOS_IMG_MOS_Portal-386p-48Hour.mp4?mt=746" type="video/mp4">
     </video>
+    <button id="playButton">播放视频</button>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
     <script>
-    window.onload = function() {
+    window.onload = function () {
         document.addEventListener("WeixinJSBridgeReady", function () {
-            alert('开始加载视频')
             var video = document.getElementById('video1');
-            alert(video)
-            video.load();
-            video.play();
+            var playButton = document.getElementById('playButton');
+            playButton.addEventListener('click', function () {
+                video.load();
+                video.play();
+            });
         }, false);
     }
     </script>
