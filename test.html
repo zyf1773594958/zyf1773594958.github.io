@@ -10,21 +10,29 @@
     <video autoplay loop="" muted="" class="video-s1" id="video1" draggable="true">
         <source id="videoSource1" src="https://img.nsmc.org.cn/CLOUDIMAGE/GEOS/MOS/IRX/VIDEO/portal/GEOS_IMG_MOS_Portal-386p-48Hour.mp4?mt=746" type="video/mp4">
     </video>
-    <button id="playButton">播放视频</button>
+    <button id="playButton" style="display: none;">播放视频</button>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
     <script>
     window.onload = function () {
         var video = document.getElementById('video1');
-        // document.addEventListener("WeixinJSBridgeReady", function () {
-        //     // var playButton = document.getElementById('playButton');
-        //     // playButton.addEventListener('click', function () {
-        //     //     video.load();
-        //     //     video.play();
-        //     // });
-        //     alert('开始播放视频');
-        //     video.load();
-        //     video.play();
-        // }, false);
+        var playButton = document.getElementById('playButton');
+
+        var clickEvent = document.createEvent('MouseEvent');
+        clickEvent.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        playButton.dispatchEvent(clickEvent);
+        video.addEventListener('play', function () {
+            console.log('视频已开始播放');
+        });
+
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            // playButton.addEventListener('click', function () {
+            //     video.load();
+            //     video.play();
+            // });
+            alert('开始播放视频');
+            video.load();
+            video.play();
+        }, false);
 
         // video.addEventListener('canplaythrough', function () {
             // alert('visibilitychange')
@@ -32,13 +40,13 @@
         //     video.play();
         // });
 
-        document.addEventListener("visibilitychange", function () {
-            if (document.visibilityState === "visible") {
-                alert('visibilitychange')
-                video.load();
-                video.play();
-            }
-        });
+        // document.addEventListener("visibilitychange", function () {
+        //     if (document.visibilityState === "visible") {
+        //         alert('visibilitychange')
+        //         video.load();
+        //         video.play();
+        //     }
+        // });
     }
     </script>
 </body>
