@@ -16,11 +16,14 @@
     window.onload = function () {
         document.addEventListener("WeixinJSBridgeReady", function () {
             var video = document.getElementById('video1');
-            var playButton = document.getElementById('playButton');
-            playButton.addEventListener('click', function () {
-                video.load();
-                video.play();
-            });
+            // var playButton = document.getElementById('playButton');
+            // playButton.addEventListener('click', function () {
+            //     video.load();
+            //     video.play();
+            // });
+            alert('开始播放视频');
+            video.load();
+            video.play();
         }, false);
     }
     </script>
