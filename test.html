@@ -27,12 +27,14 @@
         // }, false);
 
         // video.addEventListener('canplaythrough', function () {
+            // alert('visibilitychange')
         //     video.load();
         //     video.play();
         // });
 
         document.addEventListener("visibilitychange", function () {
             if (document.visibilityState === "visible") {
+                alert('visibilitychange')
                 video.load();
                 video.play();
             }
