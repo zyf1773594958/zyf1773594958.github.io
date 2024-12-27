@@ -17,27 +17,23 @@
         var video = document.getElementById('video1');
         var playButton = document.getElementById('playButton');
 
-        // var clickEvent = document.createEvent('MouseEvent');
-        // clickEvent.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-        // playButton.dispatchEvent(clickEvent);
-        // video.addEventListener('play', function () {
-        //     console.log('视频已开始播放');
-        // });
-
-        // document.addEventListener("WeixinJSBridgeReady", function () {
-        //     // playButton.addEventListener('click', function () {
-        //     //     video.load();
-        //     //     video.play();
-        //     // });
-        //     alert('开始播放视频');
-        //     video.load();
-        //     video.play();
-        // }, false);
-
-        video.addEventListener('canplaythrough', function () {
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            // playButton.addEventListener('click', function () {
+            //     video.load();
+            //     video.play();
+            // });
+            var clickEvent = document.createEvent('MouseEvent');
+            clickEvent.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            playButton.dispatchEvent(clickEvent);
+            alert('开始播放视频');
             video.load();
             video.play();
-        });
+        }, false);
+
+        // video.addEventListener('canplaythrough', function () {
+        //     video.load();
+        //     video.play();
+        // });
 
         // document.addEventListener("visibilitychange", function () {
         //     if (document.visibilityState === "visible") {
