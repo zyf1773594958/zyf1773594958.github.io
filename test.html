@@ -14,8 +14,8 @@
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
     <script>
     window.onload = function () {
+        var video = document.getElementById('video1');
         document.addEventListener("WeixinJSBridgeReady", function () {
-            var video = document.getElementById('video1');
             // var playButton = document.getElementById('playButton');
             // playButton.addEventListener('click', function () {
             //     video.load();
@@ -25,6 +25,18 @@
             video.load();
             video.play();
         }, false);
+
+        video.addEventListener('canplaythrough', function () {
+            video.load();
+            video.play();
+        });
+
+        document.addEventListener("visibilitychange", function () {
+            if (document.visibilityState === "visible") {
+                video.load();
+                video.play();
+            }
+        });
     }
     </script>
 </body>
