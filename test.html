@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <video loop="" muted="" class="video-s1" id="video1" draggable="true">
+    <video autoplay loop="" muted="" class="video-s1" id="video1" draggable="true">
         <source id="videoSource1" src="https://img.nsmc.org.cn/CLOUDIMAGE/GEOS/MOS/IRX/VIDEO/portal/GEOS_IMG_MOS_Portal-386p-48Hour.mp4?mt=746" type="video/mp4">
     </video>
     <button id="playButton">播放视频</button>
@@ -15,28 +15,28 @@
     <script>
     window.onload = function () {
         var video = document.getElementById('video1');
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            // var playButton = document.getElementById('playButton');
-            // playButton.addEventListener('click', function () {
-            //     video.load();
-            //     video.play();
-            // });
-            alert('开始播放视频');
-            video.load();
-            video.play();
-        }, false);
+        // document.addEventListener("WeixinJSBridgeReady", function () {
+        //     // var playButton = document.getElementById('playButton');
+        //     // playButton.addEventListener('click', function () {
+        //     //     video.load();
+        //     //     video.play();
+        //     // });
+        //     alert('开始播放视频');
+        //     video.load();
+        //     video.play();
+        // }, false);
 
         video.addEventListener('canplaythrough', function () {
             video.load();
             video.play();
         });
 
-        document.addEventListener("visibilitychange", function () {
-            if (document.visibilityState === "visible") {
-                video.load();
-                video.play();
-            }
-        });
+        // document.addEventListener("visibilitychange", function () {
+        //     if (document.visibilityState === "visible") {
+        //         video.load();
+        //         video.play();
+        //     }
+        // });
     }
     </script>
 </body>
