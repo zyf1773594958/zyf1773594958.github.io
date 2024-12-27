@@ -15,7 +15,9 @@
     window.onload = function() {
         document.addEventListener("WeixinJSBridgeReady", function () {
             alert('开始加载视频')
-            var video = document.getElementById('myVideo');
+            var video = document.getElementById('video1');
+            alert(video)
+            video.load();
             video.play();
         }, false);
     }
